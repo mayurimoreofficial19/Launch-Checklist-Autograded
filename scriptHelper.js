@@ -1,7 +1,5 @@
 // Write your helper functions here!
 
-//require("cross-fetch/polyfill");
-
 function addDestinationInfo(
   document,
   name,
@@ -56,6 +54,14 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     return;
   }
 
+  if (pilotValidation === "Is a Number") {
+    alert("Please enter a valid Pilot Name. Only text inputs are accepted.");
+  }
+
+  if (copilotValidation === "Is a Number") {
+    alert("Please enter a valid Co-pilot Name. Only text inputs are accepted.");
+  }
+
   if (
     fuelLevelValidation === "Not a Number" ||
     cargoLevelValidation === "Not a Number"
@@ -90,7 +96,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     cargoStatus.textContent = "Cargo mass low enough for launch";
   }
 
-  // Update visibility of faultyItems
   if (fuelIssue || cargoIssue) {
     list.style.visibility = "visible";
     launchStatus.textContent = "Shuttle Not Ready for Launch";
@@ -112,7 +117,6 @@ async function myFetch() {
 }
 
 function pickPlanet(planets) {
-  planets = myFetch();
   let randomIndex = Math.floor(Math.random() * planets.length);
   return planets[randomIndex];
 }
